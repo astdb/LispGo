@@ -13,12 +13,10 @@ import (
 )
 
 func main() {
-	// read input
-	breadr := bufio.NewReader(os.Stdin)
+	breadr := bufio.NewReader(os.Stdin)		// buffered reader to read console input
+	prompt := "glisop>>"	// console prompt
 
-	prompt := "glisop>>"
-
-	// until keyboard interrupt
+	// run REPL-style until keyboard interrupt
 	for {
 		// show prompt
 		fmt.Print(prompt)
@@ -44,15 +42,16 @@ func tokenize(input string) []string {
 
 	// error in regexp?
 	if err != nil {
-		fmt.Printf("Regexp error: %v\n", err)
+		fmt.Printf("Regexp error in tokenizer: %v\n", err)
 		return nil
 	}
 
-	// replace
+	// perform replacement using prepared regexps and return result of splitting on whitespace
 	input = r_spc_op.ReplaceAllString(r_spc_cl.ReplaceAllString(input, " ) "), " ( ")
 	return strings.Split(input, " ")
 }
 
+// parenthesize() takes the tokens produced by tokenize() and produces a nested array that mimics the structure of the Lisp code
 func parenthesize(tokens []string, list []*category) []*category {
 	if list == nil {
 		return parenthesize(tokens, []*category{})
