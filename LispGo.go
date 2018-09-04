@@ -1,5 +1,5 @@
-// LispGo is a toy lisp interpreter writtn in Go, in line with the spirit of http://norvig.com/lispy.html,
-// https://maryrosecook.com/blog/post/little-lisp-interpreter and http://steve-yegge.blogspot.com.au/2007/06/rich-programmer-food.html
+// LispGo is a toy lisp interpreter writtn in Go, in the spirit of http://norvig.com/lispy.html and
+// https://maryrosecook.com/blog/post/little-lisp-interpreter
 
 package main
 
